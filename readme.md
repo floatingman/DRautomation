@@ -1,6 +1,6 @@
 # ShadeTree Automation
 
-## A set blogging platform automation tests written in Java using Selenium
+## A set of blogging platform automation tests written in Java using Selenium
 
 ### How do I use this?
 To run the tests you need Maven installed. You can run all the test

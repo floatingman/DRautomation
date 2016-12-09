@@ -21,7 +21,7 @@ public class Login extends Base {
 
     public Login(WebDriver driver) {
         super(driver);
-        visit("http://interview25.dev.digitalreasoning.com/ghost/signin/");
+        visit("/ghost/signin/");
         assertTrue("The login form is not present", isDisplayed(loginFormLocator));
     }
 
