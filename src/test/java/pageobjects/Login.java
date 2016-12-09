@@ -29,18 +29,13 @@ public class Login extends Base {
         type(email, usernameLocator);
         type(password, passwordLocator);
         click(submitButton);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public Boolean successMessagePresent() {
-        return isDisplayed(successMessageLocator);
+        return isDisplayed(successMessageLocator, 2);
     }
 
     public Boolean failureMessagePresent() {
-        return isDisplayed(failureMessageLocator);
+        return isDisplayed(failureMessageLocator, 2);
     }
 }
