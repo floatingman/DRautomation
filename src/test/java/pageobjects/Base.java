@@ -35,6 +35,16 @@ public class Base {
         find(locator).click();
     }
 
+    public void click(By locator, Integer timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        } catch (org.openqa.selenium.TimeoutException exception) {
+             exception.printStackTrace();
+        }
+        find(locator).click();
+    }
+
     public void type(String inputText, By locator) {
         find(locator).sendKeys(inputText);
     }

@@ -16,8 +16,7 @@ public class AdminContent extends Base {
     }
 
     public void startNewPost() {
-        if (isDisplayed(newPostButton, 2))
-            click(newPostButton);
+            click(newPostButton, 5);
     }
 
     public Boolean newPostPagePresent() {
