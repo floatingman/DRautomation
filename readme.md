@@ -27,3 +27,12 @@ You can also specify various browsers, ,versions and, OSs at the command line li
 **mvn clean test -Dhost=saucelabs -Dbrowser=chrome -DbrowserVersion=40 -Dplatform="OS X 10.8"**
 
 Here is a whole list of supported platforms. [link](https://saucelabs.com/platforms)
+
+###Test Categories
+You can categorize tests by added by using a JUnit @Category annotation above each test 
+or at the top of the class. Right now I have setup two categories, Deep and Shallow. 
+You can run all tests in a particular category by specifying it in the Maven command.
+
+**mvn clean test -Dgroups=tests.groups.Deep** 
+
+The Shallow group is run by default.

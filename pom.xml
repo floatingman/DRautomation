@@ -27,6 +27,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <properties>
+        <groups>tests.groups.Shallow</groups>
+    </properties>
     <build>
         <pluginManagement>
             <plugins>
@@ -38,6 +41,7 @@
                         <parallel>classesAndMethods</parallel>
                         <threadCount>5</threadCount>
                         <runOrder>random</runOrder>
+                        <groups>${groups}</groups>
                     </configuration>
                 </plugin>
             </plugins>
