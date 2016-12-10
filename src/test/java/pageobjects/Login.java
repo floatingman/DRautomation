@@ -32,10 +32,10 @@ public class Login extends Base {
     }
 
     public Boolean successMessagePresent() {
-        return isDisplayed(successMessageLocator, 2);
+        return isDisplayed(successMessageLocator, 5);
     }
 
     public Boolean failureMessagePresent() {
-        return isDisplayed(failureMessageLocator, 2);
+        return isDisplayed(failureMessageLocator, 5);
     }
 }
