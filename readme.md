@@ -18,6 +18,7 @@ of running your tests in multiple browsers on multiple OSs.
 
 ####Setup
 In order to run your tests in Sauce Labs: 
+
 1. Create an account at [saucelabs.com](https://saucelabs.com)
 2. Set environment variables SAUCE_USERNAME and SAUCE_ACCESS_KEY
 3. Run the tests with **mvn clean test -Dhost=saucelabs**
