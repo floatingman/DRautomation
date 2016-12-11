@@ -4,6 +4,7 @@ package tests;
  * Created by dnewman on 12/9/16.
  */
 public class Config {
+    public static final String os = System.getProperty("os.name").toLowerCase();
     public static final String baseUrl = System.getProperty("baseUrl", "http://interview25.dev.digitalreasoning.com");
     public static final String browser = System.getProperty("browser", "firefox");
     public static final String host = System.getProperty("host", "localhost");

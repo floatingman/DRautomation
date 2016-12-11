@@ -65,12 +65,23 @@ public class Base {
                 sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
                 sauceClient = new SauceREST(sauceUser, sauceKey);
             } else if (host.equals("localhost")) {
-                if (browser.equals("firefox")) {
-                    System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver");
-                    driver = new FirefoxDriver();
-                } else if (browser.equals("chrome")) {
-                    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/vendor/chromedriver");
-                    driver = new ChromeDriver();
+                if (os.equals("linux")) {
+                    if (browser.equals("firefox")) {
+                        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver_linux");
+                        driver = new FirefoxDriver();
+                    } else if (browser.equals("chrome")) {
+                        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/vendor/chromedriver_linux");
+                        driver = new ChromeDriver();
+                    }
+                }
+                else if (os.equals("mac os x")) {
+                    if (browser.equals("firefox")) {
+                        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver_mac");
+                        driver = new FirefoxDriver();
+                    } else if (browser.equals("chrome")) {
+                        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/vendor/chromedriver_mac");
+                        driver = new ChromeDriver();
+                    }
                 }
             }
         }
