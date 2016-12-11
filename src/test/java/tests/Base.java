@@ -65,7 +65,7 @@ public class Base {
                 sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
                 sauceClient = new SauceREST(sauceUser, sauceKey);
             } else if (host.equals("localhost")) {
-                if (os.equals("linux")) {
+                if (os.contains("linux")) {
                     if (browser.equals("firefox")) {
                         System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver_linux");
                         driver = new FirefoxDriver();
@@ -73,8 +73,7 @@ public class Base {
                         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/vendor/chromedriver_linux");
                         driver = new ChromeDriver();
                     }
-                }
-                else if (os.equals("mac os x")) {
+                } else if (os.contains("mac")) {
                     if (browser.equals("firefox")) {
                         System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver_mac");
                         driver = new FirefoxDriver();
