@@ -14,7 +14,8 @@ public class PostEdit extends Base {
     By toggleDropdownButton = By.className("dropdown-toggle");
     By publishButton = By.className("post-save-publish");
     By publishNowButton = By.className("js-publish-button");
-    By deletePost = By.className("delete");
+    By deletePostButton = By.xpath("//*/li[contains(@class,'delete')][2]");
+    By deleteConfirmationButton = By.className("btn-red");
     By postSettingsButton = By.className("post-settings");
     By postSettingsClose = By.className("close");
     By postSettingsAddImageButton = By.className("upload-form");
@@ -39,9 +40,21 @@ public class PostEdit extends Base {
         type(post, postText);
     }
 
+    public String GetPostTitle() {
+        return find(postTitle).getText();
+    }
+
     public void PublishPost() {
         click(toggleDropdownButton, 10);
         click(publishButton, 10);
         click(publishNowButton, 10);
     }
+
+    public void DeletePost() {
+        click(toggleDropdownButton, 10);
+        click(deletePostButton, 10);
+        click(deleteConfirmationButton, 10);
+    }
+
+
 }

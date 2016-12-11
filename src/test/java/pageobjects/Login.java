@@ -22,7 +22,7 @@ public class Login extends Base {
     public Login(WebDriver driver) {
         super(driver);
         visit("/ghost/signin/");
-        assertTrue("The login form is not present", isDisplayed(loginFormLocator));
+        assertTrue("The login form is not present", isDisplayed(loginFormLocator, 10));
     }
 
     public void with(String email, String password) {
