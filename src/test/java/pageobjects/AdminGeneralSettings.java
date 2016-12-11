@@ -15,6 +15,6 @@ public class AdminGeneralSettings extends Base {
     }
 
     public Boolean generalSettingsPagePresent() {
-        return isDisplayed(onPage, 2);
+        return isDisplayed(onPage, 10);
     }
 }

@@ -26,6 +26,11 @@
             <version>1.0.35</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>de.sven-jacobs</groupId>
+            <artifactId>loremipsum</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <properties>
         <groups>tests.groups.Shallow</groups>
@@ -42,6 +47,14 @@
                         <threadCount>5</threadCount>
                         <runOrder>random</runOrder>
                         <groups>${groups}</groups>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
                     </configuration>
                 </plugin>
             </plugins>
