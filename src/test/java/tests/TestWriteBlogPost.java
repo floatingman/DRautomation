@@ -4,12 +4,16 @@ import de.svenjacobs.loremipsum.LoremIpsum;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.openqa.selenium.WebElement;
 import pageobjects.AdminNavBar;
 import pageobjects.Login;
 import pageobjects.PostEdit;
 import tests.groups.Deep;
 
+import java.util.List;
 import java.util.Random;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by dnewman on 12/10/16.
@@ -33,11 +37,18 @@ public class TestWriteBlogPost extends Base {
 
     @Test
     public void CreateNewPostTest() {
-        navbar.startNewPost();
+        String postTitle = String.format("Test Post %d",
+                new Random().ints(1, 10000).findFirst().getAsInt());
+        String postText = loremIpsum.getParagraphs(5);
+        List<WebElement> searchResults;
 
-        blogpost.WritePostTitle(String.format("Test Post %d", new Random().ints(1, 10000).findFirst().getAsInt()));
-        blogpost.WritePost(loremIpsum.getParagraphs(5));
+        navbar.startNewPost();
+        blogpost.WritePostTitle(postTitle);
+        blogpost.WritePost(postText);
         blogpost.PublishPost();
+        searchResults = navbar.searchForPost(postTitle);
+        assertTrue("post title not in search results",
+                navbar.searchContainsPostTitle(postTitle, searchResults));
     }
 
 }

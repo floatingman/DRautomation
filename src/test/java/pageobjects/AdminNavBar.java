@@ -2,12 +2,18 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 /**
  * Created by dnewman on 12/9/16.
  */
 public class AdminNavBar extends Base {
 
+    By searchTextBox = By.xpath("//*/div/input");
+    By searchButton = By.className("gh-nav-search-button");
+    By searchResults = By.className("ember-power-select-option");
     By newPostButton = By.className("gh-nav-main-editor");
     By contentButton = By.className("gh-nav-main-content");
     By teamButton = By.className("gh-nav-main-users");
@@ -50,5 +56,18 @@ public class AdminNavBar extends Base {
 
     public void visitLabsSettings(){
         click(labsButton, 10);
+    }
+
+    public List<WebElement> searchForPost(String title) {
+        type(title, searchTextBox);
+        click(searchButton, 10);
+        return findAll(searchResults);
+    }
+
+    public boolean searchContainsPostTitle(String title, List<WebElement> results) {
+        for (WebElement result : results)
+            if (result.getText().contains(title))
+                return true;
+        return false;
     }
 }
