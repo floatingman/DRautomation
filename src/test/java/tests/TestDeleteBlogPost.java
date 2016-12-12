@@ -29,13 +29,10 @@ public class TestDeleteBlogPost extends Base {
     public void setUp() {
         homepage = new HomePage(driver);
         topposttitle = homepage.GetPosts().get(0).getText();
-
-
         login = new Login(driver);
         navbar = new AdminNavBar(driver);
         blogpost = new PostEdit(driver);
         contentpage = new AdminContent(driver);
-
         login.with("dwnewman78@gmail.com", "newp6397");
         navbar.viewContent();
     }

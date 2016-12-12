@@ -1,17 +1,26 @@
 package tests;
 
 import com.saucelabs.saucerest.SauceREST;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.junit.Rule;
 import org.junit.rules.ExternalResource;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 import static tests.Config.*;
@@ -25,6 +34,7 @@ public class Base {
     private String testName;
     private String sessionId;
     private SauceREST sauceClient;
+    protected BrowserMobProxy proxy;
 
     @Rule
     public TestRule watcher = new TestWatcher() {
@@ -48,6 +58,7 @@ public class Base {
             }
         }
     };
+
 
     @Rule
     public ExternalResource resource = new ExternalResource() {
@@ -82,12 +93,42 @@ public class Base {
                         driver = new ChromeDriver();
                     }
                 }
+            } else if (host.equals("performance")) {
+                proxy = new BrowserMobProxyServer();
+                proxy.start(0);
+                Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
+                if (os.contains("linux")) {
+                    System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver_linux");
+                    driver = new FirefoxDriver(capabilities);
+
+                } else if (os.contains("mac")) {
+                    System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver_mac");
+                    driver = new FirefoxDriver(capabilities);
+                }
+                proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+                proxy.newHar("ghostblog");
+
             }
         }
 
         @Override
         protected void after() {
+            if (host.equals("performance")) {
+                Har har = proxy.getHar();
+                String harFileName = "./ghostperformancetest.har";
+                File harFile = new File(harFileName);
+                try {
+                    har.writeTo(harFile);
+                } catch (IOException ex) {
+                    System.out.println(ex.toString());
+                    System.out.println("Could not find file " + harFileName);
+                }
+                proxy.stop();
+            }
             driver.quit();
+
         }
     };
 }

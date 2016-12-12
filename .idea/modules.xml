@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/shadeautomationfromscratch.iml" filepath="$PROJECT_DIR$/shadeautomationfromscratch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DRautomation.iml" filepath="$PROJECT_DIR$/DRautomation.iml" />
     </modules>
   </component>
 </project>
