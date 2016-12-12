@@ -12,6 +12,11 @@ page specific code is located in the **src/test/java/pageobjects** folder.
 Separating the concerns like this makes it easier to add new tests to existing test files
 as well as update element locators for existing pages or add new pages to be tested
 
+In order to add a new page to test, you would just need to add a new class to the pageobjects
+folder and make it extends the Base pageobjects class.
+
+Adding new tests is similar, there is a Base test class that each new test will need to extend.
+
 ###[Sauce Labs](https://saucelabs.com)
 You have to abilty to run your test through Sauce Labs. This opens up the capability 
 of running your tests in multiple browsers on multiple OSs.
