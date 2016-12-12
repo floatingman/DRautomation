@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="DRautomation" />
         <module name="shadeautomationfromscratch" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="DRautomation" target="1.8" />
       <module name="shadeautomationfromscratch" target="1.8" />
     </bytecodeTargetLevel>
   </component>
