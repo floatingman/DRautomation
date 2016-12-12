@@ -43,7 +43,7 @@ public class TestDeleteBlogPost extends Base {
 
         if (!blogposts.isEmpty()) {
             blogposts.get(0).click();
-            contentpage.editPost();
+            contentpage.EditPost();
             blogpost.DeletePost();
 
             homepage = new HomePage(driver);

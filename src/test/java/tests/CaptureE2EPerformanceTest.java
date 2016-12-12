@@ -58,7 +58,7 @@ public class CaptureE2EPerformanceTest extends Base {
 
             List<WebElement> blogposts = contentpage.getPostList();
             blogposts.get(0).click();
-            contentpage.editPost();
+            contentpage.EditPost();
             blogpost.DeletePost();
             try {
                 Thread.sleep(5000);

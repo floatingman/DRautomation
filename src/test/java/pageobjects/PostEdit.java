@@ -33,11 +33,13 @@ public class PostEdit extends Base {
     }
 
     public void WritePostTitle(String title) {
-        type(title, postTitle);
+        if (isDisplayed(postTitle, 10))
+            type(title, postTitle);
     }
 
     public void WritePost(String post) {
-        type(post, postText);
+        if (isDisplayed(postText, 10))
+            type(post, postText);
     }
 
     public String GetPostTitle() {
@@ -57,4 +59,11 @@ public class PostEdit extends Base {
     }
 
 
+    public void ClearPostText() {
+        find(postText).clear();
+    }
+
+    public void UpdatePost() {
+        click(publishNowButton, 10);
+    }
 }

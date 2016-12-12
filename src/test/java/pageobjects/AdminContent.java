@@ -15,6 +15,7 @@ public class AdminContent extends Base {
     By newEntry = By.id("entry-title");
     By postList = By.xpath("//*/li[contains(@class,'ember-view')]");
     By postEdit = By.className("post-edit");
+    By updateNotification = By.className("gh-notification-close");
 
 
 
@@ -30,12 +31,16 @@ public class AdminContent extends Base {
         return findAll(postList);
     }
 
-    public void editPost() {
-        click(postEdit);
+    public void EditPost() {
+        click(postEdit, 10);
     }
 
     public Boolean newPostPagePresent() {
         return isDisplayed(newEntry, 10);
+    }
+
+    public Boolean ContentUpdateNotificationPresent() {
+        return isDisplayed(updateNotification, 10);
     }
 
 
