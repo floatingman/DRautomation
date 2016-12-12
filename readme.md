@@ -33,6 +33,10 @@ You can categorize tests by added by using a JUnit @Category annotation above ea
 or at the top of the class. Right now I have setup two categories, Deep and Shallow. 
 You can run all tests in a particular category by specifying it in the Maven command.
 
-**mvn clean test -Dgroups=tests.groups.Deep** 
+**mvn clean test -Dgroups=tests.groups.Deep**
+
+If you want to run all test together, *(not recommended)* use this:
+
+**mvn clean test -Dgroups=tests.groups.All**
 
 The Shallow group is run by default.
